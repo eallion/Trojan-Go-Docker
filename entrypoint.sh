@@ -2,6 +2,8 @@
 
 # 1. 判断 Trojan-Go 配置是否存在
 # 1.1 配置文件 /etc/trojan-go/config.json
+rm -rf /etc/trojan-go/config.json
+cp /root/config.json.bak /etc/trojan-go/config.json
 if [ ! -f /etc/trojan-go/config.json ]; then
     echo "Trojan-Go config file /etc/trojan-go/config.json is required!"
     exit 1
@@ -36,8 +38,6 @@ fi
 caddy start --config /etc/caddy/Caddyfile
 
 # 4. 替换 Trojan-Go 配置文件内容
-rm -rf /etc/trojan-go/config.json
-cp /etc/trojan-go/config.json.bak /etc/trojan-go/config.json
 sed -i "s/your_password/$TROJAN_GO_SERVICE_PASSWORD/" /etc/trojan-go/config.json
 sed -i "s/your-domain-name.com/$TROJAN_GO_SERVICE_PASSWORD/" /etc/trojan-go/config.json
 sed -i "s/your_cert.crt/certificate.crt/" /etc/trojan-go/config.json

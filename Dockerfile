@@ -22,7 +22,7 @@ RUN echo "  file_server" >> /etc/caddy/Caddyfile
 RUN echo "}" >> /etc/caddy/Caddyfile
 
 # 4. 备份 Trojan-Go 的配置文件
-RUN cp /etc/trojan-go/config.json /etc/trojan-go/config.json.bak
+RUN cp /etc/trojan-go/config.json /root/config.json.bak
 
 # 5. 使用新的 entrypoint.sh 启动脚本
 # 拷贝 entrypoint.sh 到容器
