@@ -24,6 +24,11 @@ RUN echo "}" >> /etc/caddy/Caddyfile
 # 4. 备份 Trojan-Go 的配置文件
 RUN cp /etc/trojan-go/config.json /root/config.json.bak
 
+# 5. 下载 geoip.dat 和 geosite.dat 等文件
+RUN wget https://github.com/v2fly/domain-list-community/raw/release/dlc.dat -O /usr/share/trojan-go/geosite.dat
+RUN wget https://github.com/v2fly/geoip/raw/release/geoip.dat -O /usr/share/trojan-go/geoip.dat
+RUN wget https://github.com/v2fly/geoip/raw/release/geoip-only-cn-private.dat -O /usr/share/trojan-go/geoip-only-cn-private.dat
+
 # 5. 使用新的 entrypoint.sh 启动脚本
 # 拷贝 entrypoint.sh 到容器
 COPY entrypoint.sh /root/entrypoint.sh
