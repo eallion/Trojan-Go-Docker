@@ -16,9 +16,10 @@ RUN mv /var/www/html/restaurant-website-master/* /var/www/html/
 
 # 3. 编辑 Caddy 的配置文件
 RUN mkdir -vp /etc/caddy/
-RUN echo "localhost:80 {" > /etc/caddy/Caddyfile
+RUN echo ":80 {" > /etc/caddy/Caddyfile
 RUN echo "  root * /var/www/html" >> /etc/caddy/Caddyfile
-RUN echo "  file_server" >> /etc/caddy/Caddyfile
+RUN echo "  file_server browse" >> /etc/caddy/Caddyfile
+RUN echo "  try_files {path} /index.html" >> /etc/caddy/Caddyfile
 RUN echo "}" >> /etc/caddy/Caddyfile
 
 # 4. 备份 Trojan-Go 的配置文件
