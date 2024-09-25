@@ -26,6 +26,7 @@ RUN echo "}" >> /etc/caddy/Caddyfile
 RUN cp /etc/trojan-go/config.json /root/config.json.bak
 
 # 5. 下载 geoip.dat 和 geosite.dat 等文件
+RUN mkdir -vp /usr/share/trojan-go/
 RUN wget https://github.com/v2fly/domain-list-community/raw/release/dlc.dat -O /usr/share/trojan-go/geosite.dat
 RUN wget https://github.com/v2fly/geoip/raw/release/geoip.dat -O /usr/share/trojan-go/geoip.dat
 RUN wget https://github.com/v2fly/geoip/raw/release/geoip-only-cn-private.dat -O /usr/share/trojan-go/geoip-only-cn-private.dat
