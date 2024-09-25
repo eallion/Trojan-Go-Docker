@@ -11,6 +11,7 @@ RUN mv caddy /usr/local/bin/
 RUN mkdir -vp /var/www/html/
 WORKDIR /var/www/html/
 RUN wget https://github.com/YaninaTrekhleb/restaurant-website/archive/refs/heads/master.zip
+RUN unzip master.zip
 RUN mv /var/www/html/restaurant-website-master/* /var/www/html/
 
 # 3. 编辑 Caddy 的配置文件
